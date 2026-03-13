@@ -14,14 +14,14 @@
   --border:rgba(255,255,255,0.06); --radius:16px; --naver:#03c75a;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(79,140,255,0.06) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(124,92,252,0.04) 0%,transparent 50%);z-index:0;pointer-events:none;}
 .app{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:20px 16px 60px;}
 
 /* Header */
 .header{text-align:center;padding:32px 0 20px;}
 .header-badge{display:inline-block;padding:6px 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:20px;font-size:11px;font-weight:600;letter-spacing:0.5px;margin-bottom:16px;}
-.header h1{font-family:'Poppins','Noto Sans KR',sans-serif;font-size:24px;font-weight:800;line-height:1.3;background:linear-gradient(135deg,#fff,#a8b8d8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header h1{font-family:'Poppins','Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-size:24px;font-weight:800;line-height:1.3;background:linear-gradient(135deg,#fff,#a8b8d8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .header p{color:var(--text-dim);font-size:13px;margin-top:8px;line-height:1.6;}
 
 /* Summary Card */
@@ -44,9 +44,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 /* Tabs */
 .tabs{display:flex;gap:6px;margin-bottom:28px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;-ms-overflow-style:none;}
 .tabs::-webkit-scrollbar{display:none;}
-.tab-btn{flex-shrink:0;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:pan-x;}
+.tab-btn{flex-shrink:0;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:pan-x;}
 .tab-btn:hover{border-color:rgba(255,255,255,0.12);color:var(--text);}
-.tab-btn.active{background:rgba(79,140,255,0.1);border-color:var(--accent);color:var(--accent);font-weight:600;}
+.tab-btn[aria-selected="true"]{background:rgba(79,140,255,0.1);border-color:var(--accent);color:var(--accent);font-weight:600;}
 
 /* Topic */
 .topic{display:none;animation:fadeUp 0.4s ease;}
@@ -69,6 +69,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .flow-step.current .flow-card,.flow-step.open .flow-card{border-color:rgba(79,140,255,0.25);box-shadow:0 4px 24px rgba(79,140,255,0.06);}
 .flow-step.visited .flow-card{opacity:0.7;}
 .flow-step.visited.open .flow-card{opacity:1;}
+
+/* Locked step hint */
+.flow-step.locked .flow-card{cursor:not-allowed;}
+.flow-step.locked .flow-card:hover{border-color:var(--border);}
+.flow-hint{position:absolute;left:50%;transform:translateX(-50%);top:-28px;background:var(--surface2);border:1px solid rgba(255,159,67,0.3);color:var(--orange);font-size:11px;padding:4px 12px;border-radius:8px;white-space:nowrap;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:10;}
+.flow-hint.show{opacity:1;}
 
 .flow-title{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;}
 .flow-chevron{margin-left:auto;font-size:12px;color:var(--text-muted);transition:transform 0.3s;}
@@ -94,9 +100,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 /* Next/Prev buttons */
 .flow-actions{display:flex;gap:8px;margin-top:12px;}
-.flow-next{display:inline-flex;align-items:center;gap:4px;padding:8px 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:white;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR',sans-serif;}
+.flow-next{display:inline-flex;align-items:center;gap:4px;padding:8px 16px;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:10px;color:white;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;}
 .flow-next:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(79,140,255,0.3);}
-.flow-prev{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text-dim);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR',sans-serif;}
+.flow-prev{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text-dim);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;}
 .flow-prev:hover{background:var(--surface);color:var(--text);border-color:rgba(255,255,255,0.12);}
 
 /* KPI section */
@@ -104,8 +110,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .kpi-section h3{font-size:14px;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
 .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .kpi-item{background:var(--surface2);border-radius:10px;padding:14px;text-align:center;}
-.kpi-value{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--green);}
+.kpi-value{font-family:'Poppins','Noto Sans KR',sans-serif;font-size:13px;font-weight:700;color:var(--green);}
 .kpi-label{font-size:11px;color:var(--text-muted);margin-top:4px;}
+.kpi-basis{font-size:10px;color:var(--text-muted);margin-top:3px;font-style:italic;opacity:0.7;}
 
 /* Complete */
 .flow-complete{text-align:center;padding:28px 20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-top:8px;display:none;animation:fadeUp 0.4s ease;}
@@ -113,7 +120,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .flow-complete .icon{font-size:44px;margin-bottom:10px;}
 .flow-complete h3{font-size:16px;margin-bottom:6px;}
 .flow-complete p{font-size:13px;color:var(--text-dim);line-height:1.6;}
-.restart-btn{width:100%;padding:12px;margin-top:16px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text-dim);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR',sans-serif;}
+.restart-btn{width:100%;padding:12px;margin-top:16px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text-dim);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;}
 .restart-btn:hover{background:var(--surface);color:var(--text);}
 
 /* Rules table */
@@ -149,7 +156,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 /* Reference accordion */
 .ref-section{margin-bottom:20px;}
-.ref-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:600;color:var(--text);text-align:left;}
+.ref-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;font-size:13px;font-weight:600;color:var(--text);text-align:left;}
 .ref-toggle:hover{border-color:rgba(255,255,255,0.12);}
 .ref-toggle.open{border-radius:12px 12px 0 0;border-bottom-color:transparent;}
 .ref-toggle .arrow{font-size:11px;color:var(--text-muted);transition:transform 0.3s;}
@@ -163,6 +170,15 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .ref-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap;}
 .ref-table tr:last-child td{border-bottom:none;}
 .ref-label{font-size:11px;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:center;gap:4px;}
+
+/* Cost estimate */
+.cost-card{background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.15);border-radius:12px;padding:16px;margin-top:16px;}
+.cost-card h4{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.cost-row{display:flex;justify-content:space-between;padding:6px 0;font-size:12px;border-bottom:1px solid var(--border);}
+.cost-row:last-child{border-bottom:none;}
+.cost-row .cost-item{color:var(--text-dim);}
+.cost-row .cost-val{color:var(--text);font-weight:600;}
+.cost-total{display:flex;justify-content:space-between;padding:10px 0 0;font-size:13px;font-weight:700;color:var(--gold);border-top:1px solid rgba(255,215,0,0.2);margin-top:6px;}
 
 /* Helpers */
 .hl{color:var(--accent);font-weight:600;}
@@ -221,15 +237,15 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   </div>
 
   <!-- ===== TABS ===== -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTopic(0)">🔥 챌린지</button>
-    <button class="tab-btn" onclick="switchTopic(1)">🎁 리워드</button>
-    <button class="tab-btn" onclick="switchTopic(2)">💬 과제 운영</button>
-    <button class="tab-btn" onclick="switchTopic(3)">🔒 자료보호</button>
+  <div class="tabs" role="tablist" aria-label="운영 개편 항목">
+    <button type="button" class="tab-btn" role="tab" aria-selected="true" aria-controls="topic0" id="tab0" onclick="switchTopic(0)">🔥 챌린지</button>
+    <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="topic1" id="tab1" onclick="switchTopic(1)">🎁 리워드</button>
+    <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="topic2" id="tab2" onclick="switchTopic(2)">💬 과제 운영</button>
+    <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="topic3" id="tab3" onclick="switchTopic(3)">🔒 자료보호</button>
   </div>
 
   <!-- ====== TOPIC 0: 챌린지 ====== -->
-  <div class="topic active" id="topic0">
+  <div class="topic active" id="topic0" role="tabpanel" aria-labelledby="tab0">
     <div class="topic-header">
       <h2>🔥 챌린지 시스템 운영 흐름</h2>
       <p>수강생이 챌린지에 참여하고 완주하기까지의 전체 과정입니다.</p>
@@ -272,7 +288,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               <tr><td>중도 포기 시</td><td>1개월 후 재신청 가능</td></tr>
               <tr><td>운영진 확인 방식</td><td>게시글 수 카운트 + 톡방 공유 여부 체크</td></tr>
             </table>
-            <div class="flow-actions"><button class="flow-next" onclick="event.stopPropagation(); advanceStep(0,0)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(0,0)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -293,7 +309,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 챌린지 신청 게시판</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(0,0)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(0,1)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(0,0)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(0,1)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -315,7 +331,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 챌린지 진행 게시판</div>
             <div class="note">※ 강의 비밀번호, 강의 요약 등 강의 핵심 내용은 기재 금지</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(0,1)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(0,2)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(0,1)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(0,2)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -335,7 +351,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where kakao">📍 카카오톡 — 수강생 전용 단톡방</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(0,2)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(0,3)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(0,2)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(0,3)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -352,7 +368,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               <div class="mock-cafe-body" style="margin-top:6px;">50일 전엔 상품 등록도 못 하던 제가 월 150만원을 찍었습니다. 챌린지 아니었으면 중간에 포기했을 거예요!</div>
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 챌린지 완주 후기 게시판</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(0,3)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(0,4)">완료 ✓</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(0,3)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(0,4)">완료 ✓</button></div>
           </div>
         </div>
       </div>
@@ -366,18 +382,34 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="kpi-section" style="margin-top:16px;text-align:left;">
         <h3>📊 기대 지표</h3>
         <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-value">참여율 30%+</div><div class="kpi-label">파일럿 1개월 내 수강생 대비</div></div>
-          <div class="kpi-item"><div class="kpi-value">인증글 주 20건+</div><div class="kpi-label">주간 카페 게시글 증가량</div></div>
-          <div class="kpi-item"><div class="kpi-value">완주율 60%+</div><div class="kpi-label">챌린지 신청 대비 완주 비율</div></div>
-          <div class="kpi-item"><div class="kpi-value">후기 월 10건+</div><div class="kpi-label">완주 후기 축적 속도</div></div>
+          <div class="kpi-item">
+            <div class="kpi-value">참여율 30%+</div>
+            <div class="kpi-label">파일럿 1개월 내 수강생 대비</div>
+            <div class="kpi-basis">근거: 지옥캠프 밤샘챌린지 초기 참여율 기준</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">인증글 주 20건+</div>
+            <div class="kpi-label">주간 카페 게시글 증가량</div>
+            <div class="kpi-basis">근거: 참여자 15명 × 5일 1회 최소 빈도</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">완주율 60%+</div>
+            <div class="kpi-label">챌린지 신청 대비 완주 비율</div>
+            <div class="kpi-basis">근거: 리워드 + 톡방 공유 동기부여 효과 가정</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">후기 월 10건+</div>
+            <div class="kpi-label">완주 후기 축적 속도</div>
+            <div class="kpi-basis">근거: 월 15명 신청 × 60% 완주 시</div>
+          </div>
         </div>
       </div>
-      <button class="restart-btn" onclick="resetFlow(0)">다시 보기</button>
+      <button type="button" class="restart-btn" onclick="resetFlow(0)">다시 보기</button>
     </div>
   </div>
 
   <!-- ====== TOPIC 1: 리워드 시스템 ====== -->
-  <div class="topic" id="topic1">
+  <div class="topic" id="topic1" role="tabpanel" aria-labelledby="tab1">
     <div class="topic-header">
       <h2>🎁 리워드 시스템</h2>
       <p>지옥캠프에서 검증된 리워드 장치를 벤치마킹하여, 우리 카페에 적용할 단계별 보상 체계입니다.</p>
@@ -395,37 +427,104 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </div>
     </div>
 
-    <div style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;">📊 벤치마킹: 지옥캠프 리워드 장치</div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:20px;">
-      <div class="ref-label">📌 지옥캠프에서 검증된 활동 유도 장치</div>
-      <table class="ref-table">
-        <tr><th>장치</th><th>유도 활동</th><th>운영 방식</th></tr>
-        <tr><td>밤샘챌린지</td><td>업무일지</td><td>참석 시 당일 1개 작성, 미참석 시 10개 작성 → 리워드 자료 비밀번호 제공</td></tr>
-        <tr><td>순수익 인증 이벤트</td><td>매출인증</td><td>Lv.1(300만): 1:1 코칭권 / Lv.2(500만): 전화코칭 / Lv.3(1000만): 억수르클럽 가입권</td></tr>
-        <tr><td>모범생 톡방</td><td>업무일지</td><td>최근 30일 내 25개 이상 작성 시 입장 가능 + 분기별 오프라인 정모</td></tr>
-        <tr><td>완강 리워드</td><td>수강후기</td><td>카페 수강후기 작성 시 그로스 분석왕 이용권 + 하디매니저 3종 키트 제공</td></tr>
-      </table>
+    <div class="flow" id="flow1">
+
+      <div class="flow-step current" data-flow="1" data-idx="0" onclick="toggleStep(this)">
+        <div class="flow-dot">1</div>
+        <div class="flow-card">
+          <div class="flow-title">📊 벤치마킹 — 지옥캠프 리워드 장치 <span class="flow-tag">검증된 사례</span><span class="flow-chevron">›</span></div>
+          <div class="flow-desc">
+            현재 지옥캠프에서 운영 중인 활동 유도 장치를 정리합니다. 이미 <span class="hl-green">수강생 행동을 실제로 바꾼 검증된 구조</span>입니다.
+            <table class="ref-table" style="margin-top:10px;">
+              <tr><th>장치</th><th>유도 활동</th><th>운영 방식</th></tr>
+              <tr><td>밤샘챌린지</td><td>업무일지</td><td>참석 시 당일 1개 작성, 미참석 시 10개 → 리워드 자료 비밀번호</td></tr>
+              <tr><td>순수익 인증</td><td>매출인증</td><td>Lv.1(300만): 1:1 코칭 / Lv.2(500만): 전화코칭 / Lv.3(1000만): 억수르클럽</td></tr>
+              <tr><td>모범생 톡방</td><td>업무일지</td><td>최근 30일 내 25개 이상 → 입장 가능 + 분기별 오프라인 정모</td></tr>
+              <tr><td>완강 리워드</td><td>수강후기</td><td>카페 수강후기 작성 → 그로스 분석왕 이용권 + 하디매니저 키트</td></tr>
+            </table>
+            <div class="flow-actions"><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(1,0)">다음 단계 →</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step" data-flow="1" data-idx="1" onclick="toggleStep(this)">
+        <div class="flow-dot">2</div>
+        <div class="flow-card">
+          <div class="flow-title">🎁 적용 제안 — 단계별 리워드 설계 <span class="flow-tag">실행안</span><span class="flow-chevron">›</span></div>
+          <div class="flow-desc">
+            벤치마킹을 바탕으로, 우리 카페에 적용할 <span class="hl">4단계 리워드 체계</span>를 제안합니다.
+            <table class="ref-table" style="margin-top:10px;">
+              <tr><th>활동</th><th>조건</th><th>보상(안)</th></tr>
+              <tr><td>챌린지 완주</td><td>30일/50일/100일 기간 내 최소 횟수 충족</td><td>기프티콘 / 베라 파인트 / 치킨</td></tr>
+              <tr><td>업무일지 우수</td><td>월 25개 이상 작성</td><td>모범생 톡방 + 오프라인 정모 참여권</td></tr>
+              <tr><td>순수익 인증</td><td>월 300만 / 500만 / 1000만 구간별</td><td>1:1 코칭권 / 전화코칭 / 프리미엄 커뮤니티</td></tr>
+              <tr><td>완강 + 수강후기</td><td>카페 수강후기 작성</td><td>전용 분석 툴 / 템플릿 등 실무 리워드</td></tr>
+            </table>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(1,0)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(1,1)">다음 단계 →</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flow-step" data-flow="1" data-idx="2" onclick="toggleStep(this)">
+        <div class="flow-dot">3</div>
+        <div class="flow-card">
+          <div class="flow-title">💰 예상 비용 & 핵심 포인트 <span class="flow-tag">의사결정 근거</span><span class="flow-chevron">›</span></div>
+          <div class="flow-desc">
+            리워드 운영에 필요한 <span class="hl-gold">월 예상 비용</span>과 핵심 판단 포인트입니다.
+            <div class="cost-card">
+              <h4>💰 월 예상 비용 (파일럿 기준, 수강생 50명 가정)</h4>
+              <div class="cost-row"><span class="cost-item">챌린지 기프티콘 (30일 완주 × 8명)</span><span class="cost-val">~40,000원</span></div>
+              <div class="cost-row"><span class="cost-item">챌린지 베라/치킨 (50~100일 완주 × 3명)</span><span class="cost-val">~50,000원</span></div>
+              <div class="cost-row"><span class="cost-item">순수익 인증 코칭 (강사 시간 비용)</span><span class="cost-val">기존 리소스 활용</span></div>
+              <div class="cost-row"><span class="cost-item">완강 리워드 (디지털 리워드)</span><span class="cost-val">~0원 (기존 자료 활용)</span></div>
+              <div class="cost-total"><span>월 현금 비용 합계</span><span>약 10만원 이내</span></div>
+            </div>
+            <div style="margin-top:14px;padding:14px;background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:12px;font-size:12.5px;color:var(--text-dim);line-height:1.7;">
+              <strong style="color:var(--green);">핵심 포인트:</strong> 큰 비용을 쓰는 것이 아니라, <strong style="color:var(--text);">활동을 하면 보상이 있고, 성과를 내면 더 주목받는 구조</strong>를 만드는 것이 목적입니다. 리워드는 동기부여의 시작점이고, 진짜 효과는 동료 자극과 사례 축적에서 나옵니다.
+            </div>
+            <div class="note">※ 코칭권·모범생 톡방 등 비현금 리워드는 추가 비용 없이 기존 강사 리소스로 운영 가능</div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(1,1)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(1,2)">완료 ✓</button></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;">🎁 적용 제안: 단계별 리워드 설계</div>
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:20px;">
-      <div class="ref-label">📌 우리 카페에 적용할 리워드 체계(안)</div>
-      <table class="ref-table">
-        <tr><th>활동</th><th>조건</th><th>보상(안)</th></tr>
-        <tr><td>챌린지 완주</td><td>30일/50일/100일 기간 내 최소 작성 횟수 충족</td><td>기프티콘 / 베라 파인트 / 치킨</td></tr>
-        <tr><td>업무일지 우수 작성</td><td>월 25개 이상 작성</td><td>모범생 톡방 입장 + 오프라인 정모 참여권</td></tr>
-        <tr><td>순수익 인증</td><td>월 300만 / 500만 / 1000만 구간별</td><td>1:1 코칭권 / 전화코칭 / 프리미엄 커뮤니티 입장</td></tr>
-        <tr><td>완강 + 수강후기</td><td>카페 수강후기 작성</td><td>전용 분석 툴 / 템플릿 등 실무 리워드</td></tr>
-      </table>
-    </div>
-
-    <div style="padding:14px;background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:12px;font-size:12.5px;color:var(--text-dim);line-height:1.7;">
-      <strong style="color:var(--green);">핵심 포인트:</strong> 큰 비용을 쓰는 것이 아니라, <strong style="color:var(--text);">활동을 하면 보상이 있고, 성과를 내면 더 주목받는 구조</strong>를 만드는 것이 목적입니다. 리워드는 동기부여의 시작점이고, 진짜 효과는 동료 자극과 사례 축적에서 나옵니다.
+    <div class="flow-complete" id="complete1">
+      <div class="icon">🎁</div>
+      <h3>리워드 시스템 확인 완료</h3>
+      <p>검증된 사례 → 적용 설계 → 비용 추정까지<br>의사결정에 필요한 정보를 모두 확인했습니다.</p>
+      <div class="kpi-section" style="margin-top:16px;text-align:left;">
+        <h3>📊 기대 지표</h3>
+        <div class="kpi-grid">
+          <div class="kpi-item">
+            <div class="kpi-value">월 비용 10만원 이내</div>
+            <div class="kpi-label">현금 리워드 지출 (파일럿)</div>
+            <div class="kpi-basis">근거: 기프티콘 단가 기준 산출</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">활동 전환율 40%+</div>
+            <div class="kpi-label">비활동 → 활동 수강생 전환</div>
+            <div class="kpi-basis">근거: 지옥캠프 밤샘챌린지 전환율 참고</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">매출인증 월 5건+</div>
+            <div class="kpi-label">순수익 인증 게시글 수</div>
+            <div class="kpi-basis">근거: 수강생 50명 중 10% 인증 가정</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">ROI 10배+</div>
+            <div class="kpi-label">투입 비용 대비 카페 활성화 가치</div>
+            <div class="kpi-basis">근거: 게시글 1건당 노출·체류 가치 환산</div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="restart-btn" onclick="resetFlow(1)">다시 보기</button>
     </div>
   </div>
 
   <!-- ====== TOPIC 2: 과제 피드백 ====== -->
-  <div class="topic" id="topic2">
+  <div class="topic" id="topic2" role="tabpanel" aria-labelledby="tab2">
     <div class="topic-header">
       <h2>💬 과제 피드백 운영 흐름</h2>
       <p>비밀글 기반 과제 제출로 1:1 느낌의 피드백을 제공하면서 강의 내용 유출 부담을 줄이는 흐름입니다.</p>
@@ -459,7 +558,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-actions">
-              <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,0)">다음 단계 →</button>
+              <button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(2,0)">다음 단계 →</button>
             </div>
           </div>
         </div>
@@ -478,8 +577,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 과제 제출 게시판 (비밀글)</div>
             <div class="flow-actions">
-              <button class="flow-prev" onclick="event.stopPropagation(); goToStep(2,0)">← 이전</button>
-              <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,1)">다음 단계 →</button>
+              <button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(2,0)">← 이전</button>
+              <button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(2,1)">다음 단계 →</button>
             </div>
           </div>
         </div>
@@ -496,8 +595,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               <div class="mock-cafe-body">상훈님 키워드 분석 잘 하셨습니다! 3번 키워드는 경쟁강도가 높아서 초반에는 4번으로 먼저 진입하는 게 좋겠습니다...</div>
             </div>
             <div class="flow-actions">
-              <button class="flow-prev" onclick="event.stopPropagation(); goToStep(2,1)">← 이전</button>
-              <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,2)">완료 ✓</button>
+              <button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(2,1)">← 이전</button>
+              <button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(2,2)">완료 ✓</button>
             </div>
           </div>
         </div>
@@ -511,18 +610,34 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="kpi-section" style="margin-top:16px;text-align:left;">
         <h3>📊 기대 지표</h3>
         <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-value">피드백 응답 24h 이내</div><div class="kpi-label">비밀글 피드백 평균 응답 시간</div></div>
-          <div class="kpi-item"><div class="kpi-value">과제 제출 수 2배+</div><div class="kpi-label">비밀글 전환 후 제출 증가</div></div>
-          <div class="kpi-item"><div class="kpi-value">만족도 80%+</div><div class="kpi-label">피드백 체감 만족도 조사</div></div>
-          <div class="kpi-item"><div class="kpi-value">유출 문의 0건</div><div class="kpi-label">강의 내용 노출 관련 이슈</div></div>
+          <div class="kpi-item">
+            <div class="kpi-value">피드백 응답 24h 이내</div>
+            <div class="kpi-label">비밀글 피드백 평균 응답 시간</div>
+            <div class="kpi-basis">근거: 강사 1일 1회 게시판 체크 기준</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">과제 제출 수 2배+</div>
+            <div class="kpi-label">비밀글 전환 후 제출 증가</div>
+            <div class="kpi-basis">근거: 공개 → 비공개 전환 시 심리적 허들 제거 효과</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">만족도 80%+</div>
+            <div class="kpi-label">피드백 체감 만족도 조사</div>
+            <div class="kpi-basis">근거: 1:1 환경 체감 만족도 일반 기준</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">유출 문의 0건</div>
+            <div class="kpi-label">강의 내용 노출 관련 이슈</div>
+            <div class="kpi-basis">근거: 비밀글은 작성자+강사만 열람 가능</div>
+          </div>
         </div>
       </div>
-      <button class="restart-btn" onclick="resetFlow(2)">다시 보기</button>
+      <button type="button" class="restart-btn" onclick="resetFlow(2)">다시 보기</button>
     </div>
   </div>
 
   <!-- ====== TOPIC 3: 자료 보호 ====== -->
-  <div class="topic" id="topic3">
+  <div class="topic" id="topic3" role="tabpanel" aria-labelledby="tab3">
     <div class="topic-header">
       <h2>🔒 강의자료 보호 운영 흐름</h2>
       <p>카페에 자료를 올리되 비밀번호를 톡방에서만 공유하여, 실질적 접근 제한을 두는 현실적인 운영 방식입니다.</p>
@@ -558,7 +673,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 강의자료 게시판</div>
-            <div class="flow-actions"><button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,0)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(3,0)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -578,7 +693,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where kakao">📍 카카오톡 — 수강생 전용 톡방 (공지사항)</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(3,0)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,1)">다음 단계 →</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(3,0)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(3,1)">다음 단계 →</button></div>
           </div>
         </div>
       </div>
@@ -593,7 +708,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               ✅ 지옥캠프 밤샘챌린지 리워드 자료 배포 시<br>동일한 방식 사용 중 — <strong>검증된 운영 방법</strong>
             </div>
             <div class="note">※ 완전한 보안이 아닌, 등급 체계 개편 없이 현실적으로 운영상 접근 허들을 만드는 방식입니다.</div>
-            <div class="flow-actions"><button class="flow-prev" onclick="event.stopPropagation(); goToStep(3,1)">← 이전</button><button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,2)">완료 ✓</button></div>
+            <div class="flow-actions"><button type="button" class="flow-prev" onclick="event.stopPropagation(); goToStep(3,1)">← 이전</button><button type="button" class="flow-next" onclick="event.stopPropagation(); advanceStep(3,2)">완료 ✓</button></div>
           </div>
         </div>
       </div>
@@ -606,13 +721,29 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="kpi-section" style="margin-top:16px;text-align:left;">
         <h3>📊 기대 지표</h3>
         <div class="kpi-grid">
-          <div class="kpi-item"><div class="kpi-value">자료 안내 1곳 통일</div><div class="kpi-label">카페 게시판으로 위치 일원화</div></div>
-          <div class="kpi-item"><div class="kpi-value">비인가 접근 0건</div><div class="kpi-label">타 강의 수강생 열람 차단</div></div>
-          <div class="kpi-item"><div class="kpi-value">비밀번호 문의 50%↓</div><div class="kpi-label">톡방 공지 고정으로 CS 감소</div></div>
-          <div class="kpi-item"><div class="kpi-value">안내 동선 단순화</div><div class="kpi-label">"카페 위치 + 공지 비밀번호"로 통일</div></div>
+          <div class="kpi-item">
+            <div class="kpi-value">자료 안내 1곳 통일</div>
+            <div class="kpi-label">카페 게시판으로 위치 일원화</div>
+            <div class="kpi-basis">근거: 현재 톡방·카페 분산 안내 → 단일화</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">비인가 접근 0건</div>
+            <div class="kpi-label">타 강의 수강생 열람 차단</div>
+            <div class="kpi-basis">근거: 비밀번호 톡방 공지 한정 공유</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">비밀번호 문의 50%↓</div>
+            <div class="kpi-label">톡방 공지 고정으로 CS 감소</div>
+            <div class="kpi-basis">근거: 고정 공지 접근성 vs 채팅 유실 비교</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">안내 동선 단순화</div>
+            <div class="kpi-label">"카페 위치 + 공지 비밀번호"로 통일</div>
+            <div class="kpi-basis">근거: 안내 멘트 1회로 CS 응대 간소화</div>
+          </div>
         </div>
       </div>
-      <button class="restart-btn" onclick="resetFlow(3)">다시 보기</button>
+      <button type="button" class="restart-btn" onclick="resetFlow(3)">다시 보기</button>
     </div>
   </div>
 
@@ -626,7 +757,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="decision-card">
         <div class="label approve">Why Approve</div>
         <div class="title">구조를 뒤엎지 않고 실행 가능</div>
-        <div class="desc">새 플랫폼 도입이나 권한 재설정 없이, 현재 카페+톡방 환경에서 공지 세팅만으로 바로 적용할 수 있는 안입니다.</div>
+        <div class="desc">새 플랫폼 도입이나 권한 재설정 없이, 현재 카페+톡방 환경에서 공지 세팅만으로 바로 적용할 수 있는 안입니다. 월 현금 비용도 10만원 이내로 부담이 적습니다.</div>
       </div>
       <div class="decision-card">
         <div class="label start">How To Start</div>
@@ -639,63 +770,110 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <script>
-var flowCounts = [5, 0, 3, 3];
-
-function toggleRef(el) {
-  el.classList.toggle('open');
-  var body = el.nextElementSibling;
-  body.classList.toggle('open');
-}
+var flowCounts = [5, 3, 3, 3];
+var hintTimers = {};
 
 function switchTopic(idx) {
-  document.querySelectorAll('.tab-btn').forEach(function(t,i){ t.classList.toggle('active', i===idx); });
-  document.querySelectorAll('.topic').forEach(function(t,i){ t.classList.toggle('active', i===idx); });
+  document.querySelectorAll('.tab-btn').forEach(function(t, i) {
+    t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+  });
+  document.querySelectorAll('.topic').forEach(function(t, i) {
+    t.classList.toggle('active', i === idx);
+  });
 }
 
 function toggleStep(el) {
   var flow = parseInt(el.getAttribute('data-flow'));
   var idx = parseInt(el.getAttribute('data-idx'));
+
   // If visited, toggle open/close for re-reading
   if (el.classList.contains('visited')) {
     el.classList.toggle('open');
+    return;
   }
+
   // If current, do nothing (already open)
+  if (el.classList.contains('current')) {
+    return;
+  }
+
+  // If neither visited nor current (future/locked step), show hint
+  showLockedHint(el);
+}
+
+function showLockedHint(el) {
+  // Remove any existing hint
+  var existing = el.querySelector('.flow-hint');
+  if (existing) existing.remove();
+
+  var hint = document.createElement('div');
+  hint.className = 'flow-hint';
+  hint.textContent = '이전 단계를 먼저 진행해 주세요';
+  el.querySelector('.flow-card').style.position = 'relative';
+  el.querySelector('.flow-card').appendChild(hint);
+
+  // Brief shake animation
+  el.querySelector('.flow-card').style.animation = 'shake 0.3s ease';
+  setTimeout(function() {
+    el.querySelector('.flow-card').style.animation = '';
+  }, 300);
+
+  requestAnimationFrame(function() {
+    hint.classList.add('show');
+  });
+
+  // Clear previous timer for this element
+  var key = el.getAttribute('data-flow') + '-' + el.getAttribute('data-idx');
+  if (hintTimers[key]) clearTimeout(hintTimers[key]);
+
+  hintTimers[key] = setTimeout(function() {
+    hint.classList.remove('show');
+    setTimeout(function() { if (hint.parentNode) hint.remove(); }, 300);
+  }, 1500);
 }
 
 function goToStep(flow, idx) {
-  var steps = document.querySelectorAll('.flow-step[data-flow="'+flow+'"]');
-  steps.forEach(function(s) { s.classList.remove('current','open'); });
+  var steps = document.querySelectorAll('.flow-step[data-flow="' + flow + '"]');
+  steps.forEach(function(s) { s.classList.remove('current', 'open'); });
   var target = steps[idx];
   target.classList.remove('visited');
   target.classList.add('current');
-  setTimeout(function(){ target.querySelector('.flow-card').scrollIntoView({ behavior:'smooth', block:'center' }); }, 150);
+  setTimeout(function() { target.querySelector('.flow-card').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
 }
 
 function advanceStep(flow, idx) {
-  var steps = document.querySelectorAll('.flow-step[data-flow="'+flow+'"]');
+  var steps = document.querySelectorAll('.flow-step[data-flow="' + flow + '"]');
   var current = steps[idx];
-  current.classList.remove('current','open');
+  current.classList.remove('current', 'open');
   current.classList.add('visited');
   if (idx + 1 < flowCounts[flow]) {
     var next = steps[idx + 1];
     next.classList.add('current');
-    setTimeout(function(){ next.querySelector('.flow-card').scrollIntoView({ behavior:'smooth', block:'center' }); }, 150);
+    setTimeout(function() { next.querySelector('.flow-card').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
   } else {
     var complete = document.getElementById('complete' + flow);
     complete.classList.add('show');
-    setTimeout(function(){ complete.scrollIntoView({ behavior:'smooth', block:'center' }); }, 150);
+    setTimeout(function() { complete.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 150);
   }
 }
 
 function resetFlow(flow) {
-  var steps = document.querySelectorAll('.flow-step[data-flow="'+flow+'"]');
+  var steps = document.querySelectorAll('.flow-step[data-flow="' + flow + '"]');
   steps.forEach(function(s, i) {
-    s.classList.remove('current','visited','open');
+    s.classList.remove('current', 'visited', 'open');
     if (i === 0) s.classList.add('current');
   });
   document.getElementById('complete' + flow).classList.remove('show');
-  steps[0].querySelector('.flow-card').scrollIntoView({ behavior:'smooth', block:'center' });
+  steps[0].querySelector('.flow-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 </script>
+<style>
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+</style>
 </body>
 </html>
