@@ -42,9 +42,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .summary-text{font-size:12.5px;color:var(--text-dim);line-height:1.6;}
 
 /* Tabs */
-.tabs{display:flex;gap:8px;margin-bottom:28px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}
+.tabs{display:flex;gap:6px;margin-bottom:28px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;-ms-overflow-style:none;}
 .tabs::-webkit-scrollbar{display:none;}
-.tab-btn{flex-shrink:0;padding:10px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;}
+.tab-btn{flex-shrink:0;padding:10px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--border);font-size:12px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all 0.3s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif;-webkit-tap-highlight-color:transparent;touch-action:pan-x;}
 .tab-btn:hover{border-color:rgba(255,255,255,0.12);color:var(--text);}
 .tab-btn.active{background:rgba(79,140,255,0.1);border-color:var(--accent);color:var(--accent);font-weight:600;}
 
@@ -144,6 +144,23 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 /* Flow tag */
 .flow-tag{margin-left:auto;flex-shrink:0;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;background:rgba(79,140,255,0.1);color:var(--accent);border:1px solid rgba(79,140,255,0.15);}
 
+/* Reference accordion */
+.ref-section{margin-bottom:20px;}
+.ref-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--surface);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all 0.3s;font-family:'Noto Sans KR',sans-serif;font-size:13px;font-weight:600;color:var(--text);text-align:left;}
+.ref-toggle:hover{border-color:rgba(255,255,255,0.12);}
+.ref-toggle.open{border-radius:12px 12px 0 0;border-bottom-color:transparent;}
+.ref-toggle .arrow{font-size:11px;color:var(--text-muted);transition:transform 0.3s;}
+.ref-toggle.open .arrow{transform:rotate(180deg);}
+.ref-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease;background:var(--surface);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;}
+.ref-body.open{max-height:800px;}
+.ref-body-inner{padding:16px;}
+.ref-table{width:100%;border-collapse:collapse;font-size:12px;}
+.ref-table th{padding:10px;text-align:left;background:var(--surface2);color:var(--text);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.3px;border-bottom:1px solid var(--border);}
+.ref-table td{padding:10px;border-bottom:1px solid var(--border);color:var(--text-dim);line-height:1.5;}
+.ref-table td:first-child{font-weight:600;color:var(--text);white-space:nowrap;}
+.ref-table tr:last-child td{border-bottom:none;}
+.ref-label{font-size:11px;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:center;gap:4px;}
+
 /* Helpers */
 .hl{color:var(--accent);font-weight:600;}
 .hl-green{color:var(--green);font-weight:600;}
@@ -202,9 +219,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
   <!-- ===== TABS ===== -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTopic(0)">🔥 챌린지 시스템</button>
-    <button class="tab-btn" onclick="switchTopic(1)">💬 과제 피드백</button>
-    <button class="tab-btn" onclick="switchTopic(2)">🔒 자료 보호</button>
+    <button class="tab-btn active" onclick="switchTopic(0)">🔥 챌린지</button>
+    <button class="tab-btn" onclick="switchTopic(1)">🎁 리워드</button>
+    <button class="tab-btn" onclick="switchTopic(2)">💬 피드백</button>
+    <button class="tab-btn" onclick="switchTopic(3)">🔒 자료보호</button>
   </div>
 
   <!-- ====== TOPIC 0: 챌린지 ====== -->
@@ -355,8 +373,56 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
     </div>
   </div>
 
-  <!-- ====== TOPIC 1: 과제 피드백 ====== -->
+  <!-- ====== TOPIC 1: 리워드 시스템 ====== -->
   <div class="topic" id="topic1">
+    <div class="topic-header">
+      <h2>🎁 리워드 시스템</h2>
+      <p>지옥캠프에서 검증된 리워드 장치를 벤치마킹하여, 우리 카페에 적용할 단계별 보상 체계입니다.</p>
+    </div>
+    <div class="context-grid">
+      <div class="context-card">
+        <div class="label problem">Problem</div>
+        <div class="title">활동할 이유가 없다</div>
+        <div class="desc">수강 외에 카페 활동을 해야 할 동기가 부족하여, 업무일지·매출인증·수강후기 작성이 자발적으로 이루어지지 않습니다.</div>
+      </div>
+      <div class="context-card">
+        <div class="label why">Why This Works</div>
+        <div class="title">활동 = 보상이라는 직관적 구조</div>
+        <div class="desc">기프티콘부터 코칭권까지 단계별 보상을 설계하면, '해야 하는 것'이 아닌 '하면 이득인 것'으로 인식이 바뀝니다.</div>
+      </div>
+    </div>
+
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;">📊 벤치마킹: 지옥캠프 리워드 장치</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:20px;">
+      <div class="ref-label">📌 지옥캠프에서 검증된 활동 유도 장치</div>
+      <table class="ref-table">
+        <tr><th>장치</th><th>유도 활동</th><th>운영 방식</th></tr>
+        <tr><td>밤샘챌린지</td><td>업무일지</td><td>참석 시 당일 1개 작성, 미참석 시 10개 작성 → 리워드 자료 비밀번호 제공</td></tr>
+        <tr><td>순수익 인증 이벤트</td><td>매출인증</td><td>Lv.1(300만): 1:1 코칭권 / Lv.2(500만): 전화코칭 / Lv.3(1000만): 억수르클럽 가입권</td></tr>
+        <tr><td>모범생 톡방</td><td>업무일지</td><td>최근 30일 내 25개 이상 작성 시 입장 가능 + 분기별 오프라인 정모</td></tr>
+        <tr><td>완강 리워드</td><td>수강후기</td><td>카페 수강후기 작성 시 그로스 분석왕 이용권 + 하디매니저 3종 키트 제공</td></tr>
+      </table>
+    </div>
+
+    <div style="font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;">🎁 적용 제안: 단계별 리워드 설계</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:20px;">
+      <div class="ref-label">📌 우리 카페에 적용할 리워드 체계(안)</div>
+      <table class="ref-table">
+        <tr><th>활동</th><th>조건</th><th>보상(안)</th></tr>
+        <tr><td>챌린지 완주</td><td>30일/50일/100일 기간 내 최소 작성 횟수 충족</td><td>기프티콘 / 베라 파인트 / 치킨</td></tr>
+        <tr><td>업무일지 우수 작성</td><td>월 25개 이상 작성</td><td>모범생 톡방 입장 + 오프라인 정모 참여권</td></tr>
+        <tr><td>순수익 인증</td><td>월 300만 / 500만 / 1000만 구간별</td><td>1:1 코칭권 / 전화코칭 / 프리미엄 커뮤니티 입장</td></tr>
+        <tr><td>완강 + 수강후기</td><td>카페 수강후기 작성</td><td>전용 분석 툴 / 템플릿 등 실무 리워드</td></tr>
+      </table>
+    </div>
+
+    <div style="padding:14px;background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:12px;font-size:12.5px;color:var(--text-dim);line-height:1.7;">
+      <strong style="color:var(--green);">핵심 포인트:</strong> 큰 비용을 쓰는 것이 아니라, <strong style="color:var(--text);">활동을 하면 보상이 있고, 성과를 내면 더 주목받는 구조</strong>를 만드는 것이 목적입니다. 리워드는 동기부여의 시작점이고, 진짜 효과는 동료 자극과 사례 축적에서 나옵니다.
+    </div>
+  </div>
+
+  <!-- ====== TOPIC 2: 과제 피드백 ====== -->
+  <div class="topic" id="topic2">
     <div class="topic-header">
       <h2>💬 과제 피드백 운영 흐름</h2>
       <p>비밀글 기반 QnA로 1:1 느낌의 피드백을 제공하면서 강의 내용 유출 부담을 줄이는 흐름입니다.</p>
@@ -373,9 +439,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         <div class="desc">비밀글은 본인과 강사만 볼 수 있어 1:1 환경이 되면서, 별도 시스템 도입 없이 기존 카페 기능으로 운영 가능합니다.</div>
       </div>
     </div>
-    <div class="flow" id="flow1">
+    <div class="flow" id="flow2">
 
-      <div class="flow-step current" data-flow="1" data-idx="0" onclick="toggleStep(this)">
+      <div class="flow-step current" data-flow="2" data-idx="0" onclick="toggleStep(this)">
         <div class="flow-dot">1</div>
         <div class="flow-card">
           <div class="flow-title">📢 비밀글 규칙 안내 <span class="flow-tag">강제 장치</span><span class="flow-chevron">›</span></div>
@@ -394,7 +460,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         </div>
       </div>
 
-      <div class="flow-step" data-flow="1" data-idx="1" onclick="toggleStep(this)">
+      <div class="flow-step" data-flow="2" data-idx="1" onclick="toggleStep(this)">
         <div class="flow-dot">2</div>
         <div class="flow-card">
           <div class="flow-title">🔒 수강생이 비밀글로 과제 제출 <span class="flow-tag">1:1 환경</span><span class="flow-chevron">›</span></div>
@@ -411,7 +477,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         </div>
       </div>
 
-      <div class="flow-step" data-flow="1" data-idx="2" onclick="toggleStep(this)">
+      <div class="flow-step" data-flow="2" data-idx="2" onclick="toggleStep(this)">
         <div class="flow-dot">3</div>
         <div class="flow-card">
           <div class="flow-title">✅ 강사가 비밀글에 피드백 <span class="flow-tag">노출 부담 제거</span><span class="flow-chevron">›</span></div>
@@ -427,7 +493,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </div>
 
     </div>
-    <div class="flow-complete" id="complete1">
+    <div class="flow-complete" id="complete2">
       <div class="icon">✅</div>
       <h3>과제 피드백 흐름 확인 완료</h3>
       <p>비밀글 하나로 1:1 피드백 환경 + 공개 노출 부담 완화를<br>동시에 달성할 수 있습니다.</p>
@@ -440,12 +506,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
           <div class="kpi-item"><div class="kpi-value">자료 접근 문의 건수</div><div class="kpi-label">운영 문의 감소 추적</div></div>
         </div>
       </div>
-      <button class="restart-btn" onclick="resetFlow(1)">다시 보기</button>
+      <button class="restart-btn" onclick="resetFlow(2)">다시 보기</button>
     </div>
   </div>
 
-  <!-- ====== TOPIC 2: 자료 보호 ====== -->
-  <div class="topic" id="topic2">
+  <!-- ====== TOPIC 3: 자료 보호 ====== -->
+  <div class="topic" id="topic3">
     <div class="topic-header">
       <h2>🔒 강의자료 보호 운영 흐름</h2>
       <p>카페에 자료를 올리되 비밀번호를 톡방에서만 공유하여, 실질적 접근 제한을 두는 현실적인 운영 방식입니다.</p>
@@ -462,9 +528,9 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
         <div class="desc">카페는 자료 위치, 톡방은 비밀번호 전달을 담당하게 역할을 나누면 구조 변경 없이 실질적 제한이 가능합니다.</div>
       </div>
     </div>
-    <div class="flow" id="flow2">
+    <div class="flow" id="flow3">
 
-      <div class="flow-step current" data-flow="2" data-idx="0" onclick="toggleStep(this)">
+      <div class="flow-step current" data-flow="3" data-idx="0" onclick="toggleStep(this)">
         <div class="flow-dot">1</div>
         <div class="flow-card">
           <div class="flow-title">📂 강의자료 업로드 (비밀번호 설정) <span class="flow-tag">자료 위치 일원화</span><span class="flow-chevron">›</span></div>
@@ -481,12 +547,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where naver">📍 네이버 카페 — 강의자료 게시판</div>
-            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,0)">다음 단계 →</button>
+            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,0)">다음 단계 →</button>
           </div>
         </div>
       </div>
 
-      <div class="flow-step" data-flow="2" data-idx="1" onclick="toggleStep(this)">
+      <div class="flow-step" data-flow="3" data-idx="1" onclick="toggleStep(this)">
         <div class="flow-dot">2</div>
         <div class="flow-card">
           <div class="flow-title">🔑 톡방 공지사항에 비밀번호 안내 <span class="flow-tag">전달 채널 분리</span><span class="flow-chevron">›</span></div>
@@ -501,12 +567,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               </div>
             </div>
             <div class="flow-where kakao">📍 카카오톡 — 수강생 전용 톡방 (공지사항)</div>
-            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,1)">다음 단계 →</button>
+            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,1)">다음 단계 →</button>
           </div>
         </div>
       </div>
 
-      <div class="flow-step" data-flow="2" data-idx="2" onclick="toggleStep(this)">
+      <div class="flow-step" data-flow="3" data-idx="2" onclick="toggleStep(this)">
         <div class="flow-dot">3</div>
         <div class="flow-card">
           <div class="flow-title">📖 수강생 비밀번호 입력 후 열람 <span class="flow-tag">현실적 통제</span><span class="flow-chevron">›</span></div>
@@ -516,13 +582,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
               ✅ 지옥캠프 밤샘챌린지 리워드 자료 배포 시<br>동일한 방식 사용 중 — <strong>검증된 운영 방법</strong>
             </div>
             <div class="note">※ 완전한 보안이 아닌, 등급 체계 개편 없이 현실적으로 운영상 접근 허들을 만드는 방식입니다.</div>
-            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(2,2)">완료 ✓</button>
+            <button class="flow-next" onclick="event.stopPropagation(); advanceStep(3,2)">완료 ✓</button>
           </div>
         </div>
       </div>
 
     </div>
-    <div class="flow-complete" id="complete2">
+    <div class="flow-complete" id="complete3">
       <div class="icon">🔒</div>
       <h3>자료 보호 흐름 확인 완료</h3>
       <p>카페 구조 변경 없이 자료 위치 안내와<br>실질적 접근 제한을 분리하는 현실적인 방법입니다.</p>
@@ -535,7 +601,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
           <div class="kpi-item"><div class="kpi-value">자료 노출 최소화</div><div class="kpi-label">타 강의 수강생 접근 차단</div></div>
         </div>
       </div>
-      <button class="restart-btn" onclick="resetFlow(2)">다시 보기</button>
+      <button class="restart-btn" onclick="resetFlow(3)">다시 보기</button>
     </div>
   </div>
 
@@ -562,7 +628,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <script>
-var flowCounts = [5, 3, 3];
+var flowCounts = [5, 0, 3, 3];
+
+function toggleRef(el) {
+  el.classList.toggle('open');
+  var body = el.nextElementSibling;
+  body.classList.toggle('open');
+}
 
 function switchTopic(idx) {
   document.querySelectorAll('.tab-btn').forEach(function(t,i){ t.classList.toggle('active', i===idx); });
